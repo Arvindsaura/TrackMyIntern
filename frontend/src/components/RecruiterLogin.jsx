@@ -20,8 +20,8 @@ const RecruiterLogin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Form submit triggered");
+    console.log("Current state:", state);
 
-    // Check for sign-up step and ensure data is submitted for the image
     if (state === "Sign Up" && !isTextDataSubmitted) {
       console.log("Data not submitted yet, showing image upload for sign-up");
       return setIsTextDataSubmitted(true);
@@ -32,7 +32,7 @@ const RecruiterLogin = () => {
         console.log("Logging in with:", email, password);
         const { data } = await axios.post(`${backendUrl}/job-portal/api/company/login`, { email, password });
 
-        console.log('Backend URL:', backendUrl);
+        console.log('Backend response for login:', data);
 
         if (data.success) {
           console.log("Login successful:", data);
@@ -47,16 +47,25 @@ const RecruiterLogin = () => {
         }
       } else {
         const formData = new FormData();
+        console.log("Preparing registration data:");
+        console.log("Company Name:", name);
+        console.log("Email:", email);
+        console.log("Password:", password);
         formData.append("name", name);
         formData.append("email", email);
         formData.append("password", password);
-        if (image) formData.append("image", image);
+        if (image) {
+          console.log("Adding company logo image to form data");
+          formData.append("image", image);
+        }
 
-        console.log("Registering company with:", formData);
+        console.log("Registering company with form data:", formData);
+        console.log("Form data being sent:", formData);
 
         const { data } = await axios.post(`${backendUrl}/job-portal/api/company/register`, formData);
 
-        console.log('Backend URL:', backendUrl);
+
+        console.log('Backend response for registration:', data);
 
         if (data.success) {
           console.log("Registration successful:", data);
@@ -77,22 +86,35 @@ const RecruiterLogin = () => {
   };
 
   useEffect(() => {
+    console.log("Component mounted, setting overflow to 'hidden'");
     document.body.style.overflow = "hidden";
     return () => {
+      console.log("Component unmounted, resetting overflow");
       document.body.style.overflow = "unset";
     };
   }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setImage(file);
+    console.log("Image selected:", file);
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setImagePreview(reader.result);
-    };
     if (file) {
-      reader.readAsDataURL(file);
+      if (file.type.startsWith('image/')) {
+        console.log("Valid image file selected");
+        setImage(file);
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          console.log("Image preview created:", reader.result);
+          setImagePreview(reader.result);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.log("Invalid file type selected, not an image");
+        toast.error("Please select a valid image.");
+      }
+    } else {
+      console.log("No file selected");
     }
   };
 
@@ -123,7 +145,10 @@ const RecruiterLogin = () => {
                 <img src={assets.person_icon} alt="Company" />
                 <input
                   className="outline-none text-sm"
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    console.log("Company Name changed:", e.target.value);
+                    setName(e.target.value);
+                  }}
                   value={name}
                   type="text"
                   placeholder="Company Name"
@@ -136,7 +161,10 @@ const RecruiterLogin = () => {
               <img src={assets.email_icon} alt="Email" />
               <input
                 className="outline-none text-sm"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  console.log("Email changed:", e.target.value);
+                  setEmail(e.target.value);
+                }}
                 value={email}
                 type="email"
                 placeholder="Email"
@@ -148,7 +176,10 @@ const RecruiterLogin = () => {
               <img src={assets.lock_icon} alt="Password" />
               <input
                 className="outline-none text-sm"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  console.log("Password changed:", e.target.value);
+                  setPassword(e.target.value);
+                }}
                 value={password}
                 type="Password"
                 placeholder="Password"
