@@ -11,7 +11,6 @@ const ManualJobForm = ({ backendUrl, onJobAdded }) => {
     isCampus: false,
     status: "Interested",
     tags: [],
-    resources: [{ title: "", url: "" }],
     applicationDeadline: "",
     notes: ""
   });
@@ -20,19 +19,6 @@ const ManualJobForm = ({ backendUrl, onJobAdded }) => {
   const handleChange = e => {
     const { name, value, type, checked } = e.target;
     setJob(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
-  };
-
-  const handleResourceChange = (index, e) => {
-    const newResources = [...job.resources];
-    newResources[index][e.target.name] = e.target.value;
-    setJob(prev => ({ ...prev, resources: newResources }));
-  };
-
-  const addResourceField = () => {
-    setJob(prev => ({
-      ...prev,
-      resources: [...prev.resources, { title: "", url: "" }]
-    }));
   };
 
   const handleAddTag = e => {
@@ -69,7 +55,6 @@ const ManualJobForm = ({ backendUrl, onJobAdded }) => {
           isCampus: false,
           status: "Interested",
           tags: [],
-          resources: [{ title: "", url: "" }],
           applicationDeadline: "",
           notes: ""
         });
@@ -143,50 +128,42 @@ const ManualJobForm = ({ backendUrl, onJobAdded }) => {
         </div>
       </div>
 
-      {/* Tags and Resources Section */}
-      <div className="flex flex-col md:flex-row gap-4 mb-4">
-        {/* Tags */}
-        <div className="flex-1">
-          <h4 className="font-medium text-lg mb-2 ibm-plex-sans-medium text-[#3626A7]">
-            Tags
-          </h4>
-          <div className="flex flex-wrap gap-2 mb-2">
-            {job.tags.map(tag => (
-              <span
-                key={tag}
-                className="bg-[#F0E6FF] text-[#3626A7] px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ibm-plex-sans-regular"
-              >
-                {tag}
-                <button
-                  type="button"
-                  onClick={() => handleRemoveTag(tag)}
-                  className="text-[#3626A7] hover:text-red-500 transition-colors"
-                >
-                  &times;
-                </button>
-              </span>
-            ))}
-          </div>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              value={newTag}
-              onChange={e => setNewTag(e.target.value)}
-              placeholder="Add tag"
-              className="p-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#3626A7] focus:outline-none flex-grow ibm-plex-sans-regular placeholder-gray-400"
-            />
-            <button
-              type="button"
-              onClick={handleAddTag}
-              className="px-4 py-2 bg-[#4169E1] text-white rounded-xl hover:bg-[#3626A7] transition ibm-plex-sans-medium"
+      {/* Tags Section */}
+      <div className="mb-4">
+        <h4 className="font-medium text-lg mb-2 ibm-plex-sans-medium text-[#3626A7]">Tags</h4>
+        <div className="flex flex-wrap gap-2 mb-2">
+          {job.tags.map(tag => (
+            <span
+              key={tag}
+              className="bg-[#F0E6FF] text-[#3626A7] px-2 py-1 rounded-full text-xs font-medium flex items-center gap-1 ibm-plex-sans-regular"
             >
-              Add
-            </button>
-          </div>
+              {tag}
+              <button
+                type="button"
+                onClick={() => handleRemoveTag(tag)}
+                className="text-[#3626A7] hover:text-red-500 transition-colors"
+              >
+                &times;
+              </button>
+            </span>
+          ))}
         </div>
-
-        {/* Resources */}
-       
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={newTag}
+            onChange={e => setNewTag(e.target.value)}
+            placeholder="Add tag"
+            className="p-2 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#3626A7] focus:outline-none flex-grow ibm-plex-sans-regular placeholder-gray-400"
+          />
+          <button
+            type="button"
+            onClick={handleAddTag}
+            className="px-4 py-2 bg-[#4169E1] text-white rounded-xl hover:bg-[#3626A7] transition ibm-plex-sans-medium"
+          >
+            Add
+          </button>
+        </div>
       </div>
 
       {/* Notes */}

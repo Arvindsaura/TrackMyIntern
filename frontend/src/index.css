@@ -42,9 +42,7 @@
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
-body, * {
-  cursor: url('/cursor.jpg') 4 4, auto; /* (4 4) sets hotspot at x=4px, y=4px */
-}
+
 
 .pixelify-sans-regular {
    font-family: "Pixelify Sans", sans-serif;

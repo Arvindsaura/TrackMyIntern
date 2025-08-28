@@ -20,7 +20,7 @@ import salesforceLogo from './assets/logos/salesforce.webp';
 import adobeLogo from './assets/logos/adobe.png';
 import spotifyLogo from './assets/logos/spotify.png';
 import nvidiaLogo from './assets/logos/nvidia.png';
-import stripeLogo from './assets/logos/stripe.png';
+
 import intelLogo from './assets/logos/intel.png';
 import tinderLogo from './assets/logos/tinder.png';
 import riotLogo from './assets/logos/riot.png';
@@ -44,7 +44,7 @@ const companyLogos = {
   'Adobe': adobeLogo,
   'Spotify': spotifyLogo,
   'NVIDIA': nvidiaLogo,
-  'Stripe': stripeLogo,
+  
   'Intel': intelLogo,
   'Tinder': tinderLogo,
   'Riot Games': riotLogo,
