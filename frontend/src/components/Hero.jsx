@@ -1,73 +1,114 @@
-import React, { useContext, useRef } from "react";
-import { assets } from "../assets/assets";
+import React, { useContext, useRef, useEffect } from "react";
 import { AppContext } from "../contexts/AppContext";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
   const { setSearchFilter, setIsSearched } = useContext(AppContext);
-
   const titleRef = useRef(null);
   const locationRef = useRef(null);
+  const heroTextRef = useRef(null);
+  const heroShapesRef = useRef([]);
 
-  const handleSearch = ()=>{
+  useEffect(() => {
+    // Hero text fade-up animation
+    gsap.from(heroTextRef.current, {
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: heroTextRef.current,
+        start: "top 80%",
+      },
+    });
+
+    // Floating shapes gentle movement
+    heroShapesRef.current.forEach((shape, i) => {
+      gsap.to(shape, {
+        y: i % 2 === 0 ? -20 : 20,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        duration: 4 + i,
+      });
+    });
+
+    // Smooth scroll for the entire page
+    gsap.to(window, {
+      scrollTo: { y: 0 },
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+  }, []);
+
+  const handleSearch = () => {
     setSearchFilter({
       title: titleRef.current.value,
-      location: locationRef.current.value
-    })
-    setIsSearched(true)
-    console.log({
-      title: titleRef.current.value,
-      location: locationRef.current.value
-    })
-  }
+      location: locationRef.current.value,
+    });
+    setIsSearched(true);
+  };
 
   return (
-    <div className="container 2xl:px-20 mx-auto my-10">
-      <div className="bg-gradient-to-r from-purple-900 to bg-purple-950 text-white py-16 text-center mx-2 rounded-xl ">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-medium mb-4">
-          Over 10,000+ jobs to apply
-        </h2>
-        <p className="mb-8 max-w-xl mx-auto text-sm font-light px-5">
-          Your Next Big Career Move Starts Right Here - Explore the Best Job
-          Opportunities and Take the First Step Toward Your Future!
+    <section className="relative bg-[#FBFBFF] min-h-screen flex flex-col justify-center px-6 md:px-20 font-['IBM_Plex_Sans'] overflow-hidden">
+      {/* Floating Abstract Shapes */}
+      {["#3626A7", "#FF331F", "#657ED4"].map((color, idx) => (
+        <div
+          key={idx}
+          ref={(el) => (heroShapesRef.current[idx] = el)}
+          className="absolute rounded-lg mix-blend-multiply opacity-20 blur-3xl"
+          style={{
+            width: `${64 + idx * 20}px`,
+            height: `${64 + idx * 20}px`,
+            backgroundColor: color,
+            top: `${idx * 20}%`,
+            left: `${20 + idx * 15}%`,
+          }}
+        ></div>
+      ))}
+
+      {/* Hero Content */}
+      <div ref={heroTextRef} className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
+        <h1 className="text-4xl md:text-6xl font-extrabold text-[#0D0106] leading-tight">
+          🚀 Find Your Dream Job Effortlessly
+        </h1>
+        <p className="text-lg md:text-xl text-[#3626A7] max-w-3xl mx-auto">
+          Explore thousands of top career opportunities and take your next step toward success.
         </p>
-        <div className="flex items-center justify-between bg-white rounded text-gray-600 max-w-xl pl-4 mx-4 sm:mx-auto">
-          <div className="flex items-center">
-            <img className="h-4 sm:h-5" src={assets.search_icon} alt="" />
-            <input
-              className="max-sm text-xs p-2 rounded outline-none w-full"
-              type="text"
-              placeholder="Search for jobs"
-              ref={titleRef}
-            />
-          </div>
-          <div className="flex items-center">
-            <img className="h-4 sm:h-5" src={assets.location_icon} alt="" />
-            <input
-              className="max-sm text-xs p-2 rounded outline-none w-full"
-              type="text"
-              placeholder="Location"
-              ref={locationRef}
-            />
-          </div>
+
+        {/* Search Bar */}
+        <div className="mt-8 flex flex-col md:flex-row items-center gap-4 justify-center max-w-3xl mx-auto">
+          <input
+            ref={titleRef}
+            type="text"
+            placeholder="Job title, keywords..."
+            className="flex-1 p-4 rounded-xl border border-[#657ED4] focus:ring-2 focus:ring-[#3626A7] focus:outline-none shadow-md text-[#0D0106] bg-[#FBFBFF]"
+          />
+          <input
+            ref={locationRef}
+            type="text"
+            placeholder="Location"
+            className="flex-1 p-4 rounded-xl border border-[#657ED4] focus:ring-2 focus:ring-[#3626A7] focus:outline-none shadow-md text-[#0D0106] bg-[#FBFBFF]"
+          />
           <button
-          onClick={handleSearch}
-           className="bg-blue-600 px-6 py-2 rounded text-white m-1">
+            onClick={handleSearch}
+            className="px-6 py-4 rounded-xl bg-[#FF331F] text-white font-semibold hover:bg-[#FF4D3F] transition-all shadow-md"
+          >
             Search
           </button>
         </div>
       </div>
-      <div className="border border-gray-300 shadow-md mx-2 mt-5 p-6 rounded-md flex ">
-        <div className="flex justify-center gap-10 lg:gap-16 flex-wrap">
-          <p className="font-medium">Trusted by</p>
-          <img className="h-6" src={assets.microsoft_logo} alt="" />
-          <img className="h-6" src={assets.walmart_logo} alt="" />
-          <img className="h-6" src={assets.accenture_logo} alt="" />
-          <img className="h-6" src={assets.samsung_logo} alt="" />
-          <img className="h-6" src={assets.amazon_logo} alt="" />
-          <img className="h-6" src={assets.adobe_logo} alt="" />
-        </div>
+
+      {/* Subtle Pixel Overlay */}
+      <div className="absolute inset-0 grid grid-cols-20 grid-rows-20 pointer-events-none">
+        {Array.from({ length: 400 }).map((_, idx) => (
+          <div key={idx} className="w-full h-full border border-[#FBFBFF]/5"></div>
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

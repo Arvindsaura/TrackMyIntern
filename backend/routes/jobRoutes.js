@@ -1,12 +1,33 @@
 import express from "express";
-import { getJobById, getJobs } from "../controllers/jobController.js";
+import {
+  createJob,
+  getAllJobs,
+  getJobById,
+  updateJob,
+  deleteJob,
+  searchJobs
+ 
+} from "../controllers/jobController.js";
+import { protect } from "../middlewares/protect.js";
 
 const router = express.Router();
 
-// get all jobs data
-router.get("/", getJobs);
+// ⭐ Post a new job (only recruiters/admins usually)
+router.post("/create", protect, createJob);
 
-// get job by id
+// ⭐ Get all jobs
+router.get("/", getAllJobs);
+
+// ⭐ Get a single job by ID
 router.get("/:id", getJobById);
+
+// ⭐ Update a job (recruiter/admin only)
+router.put("/:id", protect, updateJob);
+
+// ⭐ Delete a job
+router.delete("/:id", protect, deleteJob);
+
+// ⭐ Search jobs (by title, location, skills, etc.)
+router.get("/search/:keyword", searchJobs);
 
 export default router;

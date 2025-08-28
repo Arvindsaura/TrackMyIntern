@@ -14,7 +14,10 @@ createRoot(document.getElementById("root")).render(
   <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/" >
     <BrowserRouter>
       <AppContextProvider>
-        <App />
+      <div className="custom-cursor">
+  <App />
+</div>
+
       </AppContextProvider>
     </BrowserRouter>
   </ClerkProvider>

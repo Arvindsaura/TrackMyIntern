@@ -1,53 +1,48 @@
-// server.js
-
 import express from "express";
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 import cors from "cors";
-import "dotenv/config";
-import connectDB from "./configs/db.js";
-import * as Sentry from "@sentry/node";
-import { clerkWebhooks } from "./controllers/webhooks.js";
-import companyRoutes from "./routes/companyRoutes.js"; // Import company routes
-import jobRoutes from "./routes/jobRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
 import { clerkMiddleware } from "@clerk/express";
+import { v2 as cloudinary } from "cloudinary";
 
-// Initialize Express
+import userRoutes from "./routes/userRoutes.js";
+
+dotenv.config();
 const app = express();
 
-// Connect to Database
-await connectDB();
+// Cloudinary configuration
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-// Middlewares
-app.use(cors());
-app.use(express.json());
+// Clerk middleware
 app.use(clerkMiddleware());
 
+// Middlewares
+app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173" }));
+
+// MongoDB connection
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log("MongoDB connected"))
+  .catch(err => console.error("MongoDB connection error:", err));
+
 // Routes
-app.post("/webhooks", clerkWebhooks);
-
-// Prefix all company-related routes under /job-portal
-app.use("/job-portal/api/company", companyRoutes);  // Prefixed with /job-portal
-
-// Keep job and user routes as they are, or you can prefix them if needed
-app.use("/api/jobs", jobRoutes);
 app.use("/api/user", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("API WORKING");
+// Test route
+app.get("/", (req, res) => res.send("Server is running..."));
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ message: "Internal Server Error" });
 });
 
-// Debug Sentry route
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
-});
-
-// Port
-const port = process.env.PORT || 5000;
-
-// Setup Sentry error handler
-Sentry.setupExpressErrorHandler(app);
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,0 +1,33 @@
+[
+  {
+    "name": "Google",
+    "url": "https://careers.google.com/jobs/results/?q=intern&category=SOFTWARE_ENGINEERING",
+    "selectors": {
+      "job": ".gc-card",
+      "title": ".gc-card__title",
+      "location": ".gc-job-tags__location",
+      "link": "a"
+    },
+    "linkPrefix": "https://careers.google.com"
+  },
+  {
+    "name": "Microsoft",
+    "url": "https://jobs.careers.microsoft.com/global/en/search?q=intern",
+    "selectors": {
+      "job": "a.job-title",
+      "title": ".job-title",
+      "link": "a"
+    },
+    "linkPrefix": "https://jobs.careers.microsoft.com"
+  },
+  {
+    "name": "Adobe",
+    "url": "https://adobe.wd5.myworkdayjobs.com/en-US/external_experienced?q=intern",
+    "selectors": {
+      "job": "li",
+      "title": "h3",
+      "link": "a"
+    },
+    "linkPrefix": "https://adobe.wd5.myworkdayjobs.com"
+  }
+]

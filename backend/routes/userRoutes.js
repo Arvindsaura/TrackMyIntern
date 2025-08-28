@@ -1,24 +1,32 @@
 import express from "express";
 import {
-  applyForJob,
   getUserData,
-  getUserJobApplications,
-  updateUserResume,
+  saveJob,
+  getSavedJobs,
+  addManualJob,
+  updateJobStatus,
+  removeSavedJob,
+  uploadResume
 } from "../controllers/userController.js";
-import upload from "../configs/multer.js";
+import { protect } from "../middlewares/protect.js";
+import multer from 'multer'; // Import multer
 
 const router = express.Router();
+const upload = multer({ dest: 'uploads/' }); // Configure multer to save files in the 'uploads' directory
 
-// get user data
+// All routes protected
+router.use(protect);
+
 router.get("/user", getUserData);
+router.post("/save-job", saveJob);
+router.get("/saved-jobs", getSavedJobs);
 
-// apply for job
-router.post("/apply", applyForJob);
+// New routes
+router.post("/manual-job", addManualJob);
+router.patch("/job-status/:jobId", updateJobStatus);
+router.delete("/remove-job/:jobId", removeSavedJob);
 
-// get applied jobs data
-router.get("/applications", getUserJobApplications);
-
-// update user profile
-router.post("/update-resume", upload.single("resume"), updateUserResume);
+// New route for resume upload, with multer middleware
+router.post("/upload-resume", upload.single('resume'), uploadResume);
 
 export default router;

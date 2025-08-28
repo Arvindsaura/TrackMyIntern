@@ -1,9 +1,7 @@
 import logo from "./logo.svg";
 import search_icon from "./search_icon.svg";
 import company_icon from "./company_icon.svg";
-import microsoft_logo from "./microsoft_logo.svg";
-import walmart_logo from "./walmart_logo.svg";
-import accenture_logo from "./accenture_logo.png";
+
 import profile_img from "./profile_img.png";
 import app_main_img from "./app_main_img.png";
 import cross_icon from './cross_icon.svg';
@@ -28,11 +26,8 @@ import profile_upload_icon from './profile_upload_icon.svg'
 import person_tick_icon from './person_tick_icon.svg'
 import resume_download_icon from './resume_download_icon.svg'
 import delete_icon from './delete_icon.svg'
-import email_icon from './email_icon.svg'
-import lock_icon from './lock_icon.svg'
-import samsung_logo from './samsung_logo.png'
-import adobe_logo from './adobe_logo.png'
-import amazon_logo from './amazon_logo.png'
+
+
 
 export const assets = {
     logo,
@@ -42,9 +37,7 @@ export const assets = {
     company_icon,
     resume_not_selected,
     resume_selected,
-    microsoft_logo,
-    walmart_logo,
-    accenture_logo,
+   
     app_main_img,
     play_store,
     app_store,
@@ -65,11 +58,9 @@ export const assets = {
     profile_img,
     delete_icon,
     profile_upload_icon,
-    email_icon,
-    lock_icon,
-    samsung_logo,
-    adobe_logo,
-    amazon_logo
+  
+ 
+    
 }
 
 export const JobCategories = [

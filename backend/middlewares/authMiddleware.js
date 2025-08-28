@@ -1,11 +1,11 @@
 import jwt from "jsonwebtoken";
-import companyModel from "../models/companyModel.js";
+import userModel from "../models/userModel.js"; // Assuming you have a user model
 
-export const protectCompany = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   const token = req.headers.token;
 
   if (!token) {
-    return res.json({
+    return res.status(401).json({
       success: false,
       message: "Not Authorized. Login Again",
     });
@@ -13,14 +13,13 @@ export const protectCompany = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    req.company = await companyModel.findById(decoded.id).select("-password");
+    req.auth = decoded; // Store user information in request for access control
 
     next();
   } catch (error) {
-    res.json({
+    res.status(401).json({
       success: false,
-      message: error.message,
+      message: "Token is invalid or expired",
     });
   }
 };
