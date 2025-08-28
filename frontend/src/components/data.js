@@ -41,7 +41,7 @@ export const jobData = [
     title: "Web Solutions Engineer Intern, 2026",
     companyId: {
       name: "Google",
-      image: "src/assets/logos/google.webp",
+      image: "https://placehold.co/128x128/0A66C2/FFFFFF?text=GOOGLE",
     },
     location: "Hyderabad",
     level: "Internship",
