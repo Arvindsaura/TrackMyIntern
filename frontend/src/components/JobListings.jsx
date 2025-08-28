@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
 import { jobData } from "./data";
 import JobCard from "./JobCard";
-import { JobCategories, JobLocations } from "../assets/assets";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { AppContext } from "../contexts/AppContext";
