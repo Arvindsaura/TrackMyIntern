@@ -3,39 +3,37 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 import { clerkMiddleware } from "@clerk/express";
-import { v2 as cloudinary } from "cloudinary";
 
 import userRoutes from "./routes/userRoutes.js";
 
 dotenv.config();
 const app = express();
 
-// Cloudinary configuration
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 // Clerk middleware
 app.use(clerkMiddleware());
 
 // Middlewares
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:5173", // dynamic for production
+}));
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => console.error("MongoDB connection error:", err));
+if (!process.env.MONGODB_URI) {
+  console.error("MONGODB_URI not defined in env variables");
+} else {
+  mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+    .then(() => console.log("MongoDB connected"))
+    .catch(err => console.error("MongoDB connection error:", err));
+}
 
 // Routes
 app.use("/api/user", userRoutes);
 
-// Test route
+// Health check route
 app.get("/", (req, res) => res.send("Server is running..."));
 
 // Global error handler

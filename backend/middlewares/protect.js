@@ -1,17 +1,21 @@
 import { getAuth } from "@clerk/express";
+import { clerkClient } from "@clerk/clerk-sdk-node";
 
-export const protect = (req, res, next) => {
+export const protect = async (req, res, next) => {
   try {
-    const { userId, firstName, lastName, emailAddress } = getAuth(req);
+    const { userId } = getAuth(req);
 
     if (!userId) {
       return res.status(401).json({ message: "Not authorized, login required" });
     }
 
+    // Fetch user details from Clerk
+    const user = await clerkClient.users.getUser(userId);
+
     req.auth = {
       userId,
-      name: `${firstName || ""} ${lastName || ""}`.trim() || "No Name",
-      email: emailAddress?.[0]?.emailAddress || `noemail_${Date.now()}@example.com`,
+      name: `${user.firstName || ""} ${user.lastName || ""}`.trim() || "No Name",
+      email: user.emailAddresses?.[0]?.emailAddress || `noemail_${Date.now()}@example.com`,
     };
 
     next();
