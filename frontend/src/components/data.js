@@ -318,7 +318,7 @@ export const jobData = [
     title: "2026 Summer Internship Program - AMERS",
     companyId: {
       name: "BlackRock",
-      image: "https://brandslogos.com/wp-content/uploads/images/large/blackrock-logo.png",
+      image: "https://download.logo.wine/logo/BlackRock/BlackRock-Logo.wine.png",
     },
     location: "United States, Canada",
     level: "Internship",
