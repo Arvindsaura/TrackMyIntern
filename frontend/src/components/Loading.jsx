@@ -56,6 +56,7 @@ const Loading = () => {
         .pixelify-sans-regular {
           font-family: "Pixelify Sans", sans-serif;
         }
+        
       `}</style>
     </div>
   );
