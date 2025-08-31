@@ -24,7 +24,7 @@ export const jobData = [
   "title": "Software Engineer - Winter Intern",
   "companyId": {
     "name": "Rubrik",
-    "image": "https://placehold.co/128x128/F5F5F5/4B5563?text=Rubrik"
+    "image": "https://logowik.com/content/uploads/images/rubrik8051.jpg"
   },
   "location": "Bangalore, India",
   "level": "Internship",
@@ -92,7 +92,7 @@ export const jobData = [
     title: "SDE Intern",
     companyId: {
       name: "Upstox",
-      image: "https://placehold.co/128x128/50D890/FFFFFF?text=Upstox",
+      image: "https://tse4.mm.bing.net/th/id/OIP.BOidI6yMPicdV3-LwPc7vAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Bengaluru/Mumbai",
     level: "Internship",
@@ -127,7 +127,7 @@ export const jobData = [
     title: "SDE Intern, Alexa AI",
     companyId: {
       name: "Amazon",
-      image: "https://purepng.com/public/uploads/large/amazon-logo-s3f.png",
+      image: "https://th.bing.com/th/id/OIP.UNrk7mtcvOokh0OOoFMh5gHaCe?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Bangalore",
     level: "Internship",
@@ -144,7 +144,7 @@ export const jobData = [
     title: "Software Engineer Intern",
     companyId: {
       name: "Salesforce",
-      image: "https://placehold.co/128x128/00A1E0/FFFFFF?text=SF",
+      image: "https://th.bing.com/th/id/OIP.7wF76mX0WOm9KvCzd5JtGwHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Hyderabad/Bangalore",
     level: "Internship",
@@ -163,7 +163,7 @@ export const jobData = [
     title: "Software Engineering Intern - OpenBMC",
     companyId: {
       name: "NVIDIA",
-      image: "https://placehold.co/128x128/76B900/FFFFFF?text=NVIDIA",
+      image: "https://logos-world.net/wp-content/uploads/2020/11/Nvidia-Logo-2006-present.jpg",
     },
     location: "Taiwan, Taipei",
     level: "Internship",
@@ -180,7 +180,7 @@ export const jobData = [
     title: "Web Team Intern",
     companyId: {
       name: "Groww",
-      image: "https://placehold.co/128x128/179257/FFFFFF?text=Groww",
+      image: "https://tse3.mm.bing.net/th/id/OIP.zuJS7ugvPIfHnTpQDxdNsQHaFj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Bangalore",
     level: "Internship",
@@ -197,7 +197,7 @@ export const jobData = [
     title: "Software Development Engineer- I",
     companyId: {
       name: "Amazon",
-      image: "https://placehold.co/128x128/FF9900/FFFFFF?text=Amazon",
+      image: "https://th.bing.com/th/id/OIP.UNrk7mtcvOokh0OOoFMh5gHaCe?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "ADCI - Karnataka",
     level: "Full-Time",
@@ -214,7 +214,7 @@ export const jobData = [
     title: "Software Engineering - Internship",
     companyId: {
       name: "Giant Labs, Inc",
-      image: "https://placehold.co/128x128/000000/FFFFFF?text=Giant+Labs",
+      image: "https://img.chemie.de/Portal/Organization/159789_-s49UOkDE.jpg?tr=n-xl10",
     },
     location: "Work from home",
     level: "Internship",
@@ -231,7 +231,7 @@ export const jobData = [
     title: "Full Stack Development - Internship",
     companyId: {
       name: "Wisemonk TA",
-      image: "https://placehold.co/128x128/6C63FF/FFFFFF?text=Wisemonk",
+      image: "https://storage.tally.so/35838183-b026-4e48-bb9e-623fce425264/Wm-blue-black.png",
     },
     location: "Work from home",
     level: "Internship",
@@ -318,7 +318,7 @@ export const jobData = [
     title: "2026 Summer Internship Program - AMERS",
     companyId: {
       name: "BlackRock",
-      image: "https://placehold.co/128x128/000000/FFFFFF?text=BlackRock",
+      image: "https://brandslogos.com/wp-content/uploads/images/large/blackrock-logo.png",
     },
     location: "United States, Canada",
     level: "Internship",
