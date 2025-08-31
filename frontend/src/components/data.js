@@ -3,6 +3,40 @@
 export const jobData = [
   // Original Internships from the first prompt
   {
+  "_id": "godaddy-internship-1",
+  "title": "Software Development Engineer Intern",
+  "companyId": {
+    "name": "GoDaddy",
+    "image": "https://logos-world.net/wp-content/uploads/2022/04/GoDaddy-Logo.png"
+  },
+  "location": "Gurgaon, India",
+  "level": "Internship",
+  "description": "GoDaddy is looking for Software Engineers, Data Scientists, and UX Designers to join us as interns in building and improving GoDaddy products. As an intern, you will make meaningful contributions to the company’s revenue, customer growth, and innovation. You'll build highly scalable, cloud-ready applications, solve end-to-end problems, and work with Agile and DevOps methodologies. The internship is a temporary assignment, typically ranging from 3-6 months. This is a hybrid position, so you should live within commuting distance of the Gurgaon office.",
+  "stipend": "50,000",
+  "applyDate": "2025-09-25",
+  "requiredSkills": ["Java", "Python", "HTML", "JavaScript", "C#", "Go Lang", "Data Structures", "Algorithms", "Cloud Computing"],
+  "experience": "For 2026 graduates",
+  "commonTopics": ["Software Development", "Agile", "DevOps", "Cloud Computing", "User Experience"],
+  "applyLink": "https://job-boards.greenhouse.io/eventsandinterns/jobs/6683176003"
+},
+  {
+  "_id": "rubrik-internship-1",
+  "title": "Software Engineer - Winter Intern",
+  "companyId": {
+    "name": "Rubrik",
+    "image": "https://placehold.co/128x128/F5F5F5/4B5563?text=Rubrik"
+  },
+  "location": "Bangalore, India",
+  "level": "Internship",
+  "description": "As a Software Engineer - Intern at Rubrik, you'll join a team that values responsibility over tasks. The company's goal is to empower engineers to do their best work through a fluid structure and the flexibility to work on projects they find most engaging. Your responsibilities will include designing, developing, testing, deploying, maintaining, and improving software. You will manage individual project priorities, deadlines, and deliverables while using your technical expertise to identify and solve bottlenecks within the software stack. This is an on-site internship for 2026 graduates from circuital branches.",
+  "stipend": "1,50,000",
+  "applyDate": "2025-09-25",
+  "requiredSkills": ["Java", "C/C++", "Scala", "Python", "Data Structures", "Algorithms"],
+  "experience": "For 2026 graduates",
+  "commonTopics": ["Data Security", "Zero Trust", "Cyber Resilience", "Software Development", "Distributed Systems"],
+  "applyLink": "https://www.rubrik.com/careers/jobs/software-engineer-winter-intern"
+},
+  {
     _id: "fiddle-internship-1",
     title: "Software Development - Internship",
     companyId: {
@@ -17,14 +51,14 @@ export const jobData = [
     requiredSkills: ["Backend development", "Frontend development", "React"],
     experience: "0-1 year",
     commonTopics: ["Engineering Processes", "Scalability", "Infrastructure", "User Experience (UX)"],
-    applyLink: "https://internshala.com/internship/detail/software-development-internship-at-fiddle",
+    applyLink: "https://internshala.com/internship/detail/work-from-home-software-development-internship-at-fiddle1756204044/?utm_source=IFM_Candidates&utm_medium=IFJFAug_MKS",
   },
   {
     _id: "linkedin-internship-1",
     title: "Software Engineering Intern",
     companyId: {
       name: "LinkedIn",
-      image: "https://placehold.co/128x128/0A66C2/FFFFFF?text=LI",
+      image: "https://logosmarcas.net/wp-content/uploads/2020/03/LinkedIn-Emblema.png",
     },
     location: "Bangalore",
     level: "Internship",
@@ -34,14 +68,14 @@ export const jobData = [
     requiredSkills: ["C++", "Java", "Python", "Algorithms", "Data Structures"],
     experience: "0-1 year",
     commonTopics: ["Object-Oriented Programming (OOP)", "System Design", "Backend Development", "Data Management"],
-    applyLink: "https://www.linkedin.com/jobs/view/software-engineering-intern-3456789123",
+    applyLink: "https://www.linkedin.com/jobs/view/4291085724",
   },
   {
     _id: "google-internship-1",
     title: "Web Solutions Engineer Intern, 2026",
     companyId: {
       name: "Google",
-      image: "https://placehold.co/128x128/0A66C2/FFFFFF?text=GOOGLE",
+      image: "https://th.bing.com/th/id/R.0fa3fe04edf6c0202970f2088edea9e7?rik=joOK76LOMJlBPw&riu=http%3a%2f%2fpluspng.com%2fimg-png%2fgoogle-logo-png-open-2000.png&ehk=0PJJlqaIxYmJ9eOIp9mYVPA4KwkGo5Zob552JPltDMw%3d&risl=&pid=ImgRaw&r=0",
     },
     location: "Hyderabad",
     level: "Internship",
@@ -71,30 +105,29 @@ export const jobData = [
     applyLink: "https://upstox.com/careers/jobs/sde-internship-123456",
   },
 
-  // Internships from the second prompt
-  {
-    _id: "microsoft-internship-1",
-    title: "Explore Microsoft, Program",
-    companyId: {
-      name: "Microsoft",
-      image: "https://placehold.co/128x128/0078D4/FFFFFF?text=MS",
-    },
-    location: "Hyderabad",
-    level: "Internship",
-    description: `The Explore Microsoft Program is a 12-week summer internship for first and second-year students. It provides a unique opportunity to experience both program management and software development roles. Interns will work on a real-world project, collaborating with experienced engineers and program managers to build innovative solutions.`,
-    stipend: "75,000",
-    applyDate: "2025-09-15",
-    requiredSkills: ["C++", "C#", "Java", "Python", "Problem Solving"],
-    experience: "0-1 year",
-    commonTopics: ["Agile Development", "Cloud Computing", "Software Lifecycle", "Project Management"],
-    applyLink: "https://careers.microsoft.com/us/en/job/1234567/Explore-Microsoft-Program",
+ {
+  "_id": "microsoft-apprenticeship-1",
+  "title": "Software Engineer Apprenticeship",
+  "companyId": {
+    "name": "Microsoft",
+    "image": "https://freepnglogo.com/images/all_img/1708533802microsoft-logo-transparent.png"
   },
+  "location": "Hyderabad, Telangana, India",
+  "level": "Internship",
+  "description": "As a Software Engineering Apprentice at Microsoft, you will work with teammates to solve problems and build innovative software solutions. This is a 12-month apprenticeship program, not a full-time permanent position, focused on providing practical, on-the-job training. You will work on real-world projects in collaboration with teams across the world, applying engineering principles to solve complex problems and helping to design, develop, and test next-generation software. The role is designed for 2025 graduates with no active backlogs and no prior full-time employment.",
+  "stipend": "Competitive",
+  "applyDate": "2025-08-27",
+  "requiredSkills": ["Computer Science Fundamentals", "Data Structures", "Algorithms", "Java", "Python", "HTML5"],
+  "experience": "0 years (for 2025 graduates with no prior full-time employment)",
+  "commonTopics": ["Software Engineering", "Product Quality", "New Technologies", "Technical Program Management", "System Design"],
+  "applyLink": "https://jobs.careers.microsoft.com/global/en/job/1863327/Software-Engineer-Apprenticeship"
+},
   {
     _id: "amazon-internship-1",
     title: "SDE Intern, Alexa AI",
     companyId: {
       name: "Amazon",
-      image: "https://placehold.co/128x128/FF9900/FFFFFF?text=Amazon",
+      image: "https://purepng.com/public/uploads/large/amazon-logo-s3f.png",
     },
     location: "Bangalore",
     level: "Internship",
@@ -104,7 +137,7 @@ export const jobData = [
     requiredSkills: ["Python", "Machine Learning", "AWS", "Data Structures", "Algorithms"],
     experience: "0-1 year",
     commonTopics: ["Artificial Intelligence", "Natural Language Processing (NLP)", "Cloud Services", "Large-Scale Systems"],
-    applyLink: "https://www.amazon.jobs/en/jobs/1234567/software-development-engineer-intern-alexa-ai",
+    applyLink: "https://www.amazon.jobs/en/jobs/2995991/software-development-engineer-i",
   },
   {
     _id: "salesforce-internship-1",
@@ -215,7 +248,7 @@ export const jobData = [
     title: "Software Engineer - (Summer Internship)",
     companyId: {
       name: "Cisco",
-      image: "https://placehold.co/128x128/0466C2/FFFFFF?text=Cisco",
+      image: "https://tse4.mm.bing.net/th/id/OIP.FXPQENAZ_rodn797t3b5ygHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Bangalore, India",
     level: "Internship",
@@ -225,14 +258,14 @@ export const jobData = [
     requiredSkills: ["Python", "C++", "Java", "Networking", "Operating Systems"],
     experience: "0-1 year",
     commonTopics: ["Cloud", "Networking Protocols", "Embedded Systems", "Security", "Software Development"],
-    applyLink: "https://jobs.cisco.com/jobs/Login?projectId=1449112&source=KrishanKumarLinkedin&tags=2027summerinternship",
+    applyLink: "https://jobs.cisco.com/jobs/IsAJob?projectId=1449112&tags=2027summerinternship&source=KrishanKumarLinkedin",
   },
   {
     _id: "mercor-contract-1",
     title: "Data Science Experts",
     companyId: {
       name: "Mercor",
-      image: "https://placehold.co/128x128/000000/FFFFFF?text=Mercor",
+      image: "https://tse1.mm.bing.net/th/id/OIP.iZCVUmFwZrzPweR7RHk2HwHaCD?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Remote",
     level: "Contract",
@@ -268,7 +301,7 @@ export const jobData = [
     title: "2026 Summer Internship Program - APAC",
     companyId: {
       name: "BlackRock",
-      image: "https://placehold.co/128x128/000000/FFFFFF?text=BlackRock",
+      image: "https://tse1.mm.bing.net/th/id/OIP.18Sqget9dwTKlL5dujzcrwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     location: "Hong Kong, Japan, Singapore",
     level: "Internship",
