@@ -2,7 +2,20 @@ import mongoose from "mongoose";
 import User from "../models/userModel.js";
 
 // Valid job statuses
-const validStatuses = ["Interested", "Applied", "Interviewing", "Offered", "Rejected"];
+const validStatuses = [
+  "Interested",
+  "Applied",
+  "Assessment Scheduled",
+  "Assessment Completed",
+  "Interview Round 1",
+  "Interview Round 2",
+  "Interview Round 3",
+  "Offer Received",
+  "Offer Accepted",
+  "Rejected",
+  "Withdrawn"
+];
+
 
 // Helper: Get or create user
 const getOrCreateUser = async (clerkId, name, email) => {

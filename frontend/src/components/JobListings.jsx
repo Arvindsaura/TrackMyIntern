@@ -8,7 +8,19 @@ import { AppContext } from "../contexts/AppContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const popularLocations = ["New York", "San Francisco", "London", "Remote"];
+const popularLocations = [
+  "New York",
+  "San Francisco",
+  "London",
+  "Bangalore",
+  "Gurgaon",
+  "Pune",
+  "Mumbai",
+  "Delhi",
+  "Hyderabad",
+  "Remote"
+];
+
 const stipendRanges = [
   { label: "< ₹20k", min: 0, max: 20000 },
   { label: "₹20k - ₹40k", min: 20000, max: 40000 },

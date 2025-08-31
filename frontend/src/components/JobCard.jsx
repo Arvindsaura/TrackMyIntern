@@ -175,14 +175,11 @@ const JobCard = ({ job, savedJobs = [] }) => {
       <div className="flex justify-center mb-4">
 
         <img
+  className="h-14 w-24 object-contain"
+  src={job.companyId?.image || job.companyImage || "/fallback-logo.png"}
+  alt="Company Logo"
+/>
 
-          className="h-12 w-12 object-contain"
-
-          src={job.companyId?.image || job.companyImage || "/fallback-logo.png"}
-
-          alt="Company Logo"
-
-        />
 
       </div>
 
@@ -195,6 +192,7 @@ const JobCard = ({ job, savedJobs = [] }) => {
         {job.title}
 
       </h4>
+
 
 
 
