@@ -53,10 +53,6 @@ const Loading = () => {
         .animate-pulse-fast {
           animation: pulse-fast 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
-        .pixelify-sans-regular {
-          font-family: "Pixelify Sans", sans-serif;
-        }
-        
       `}</style>
     </div>
   );
