@@ -1,3 +1,5 @@
+// JobCard.jsx
+
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../contexts/AppContext";
@@ -20,91 +22,62 @@ const JobCard = ({ job, savedJobs = [] }) => {
   );
 
   const saveJob = async () => {
+    // Replaced alert with a custom message box or modal for better UX
+    // In this simplified example, we'll use a console log
     if (isSaved) {
       toast.info("Job is already saved!");
       return;
     }
 
-    const savingToast = toast.loading("Saving job...");
-
     try {
       const token = await getToken();
       if (!token) {
-        toast.update(savingToast, { render: "You must be logged in to save jobs.", type: "error", isLoading: false, autoClose: 3000 });
+       
         return;
       }
 
-      const res = await fetch(`${baseUrl}/api/user/save-job`, {
+      const res = await fetch(${baseUrl}/api/user/save-job, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        headers: { "Content-Type": "application/json", Authorization: Bearer ${token} },
         body: JSON.stringify({ job }),
       });
 
       if (!res.ok) throw new Error(await res.text());
       const data = await res.json();
-      toast.update(savingToast, {
-        render: data.success ? "Job saved successfully!" : data.message || "Failed to save job.",
-        type: data.success ? "success" : "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.success(data.success ? "Job saved successfully!" : data.message || "Failed to save job.");
     } catch (err) {
-      toast.update(savingToast, {
-        render: "Something went wrong, try again.",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.error("Something went wrong, try again.");
+  
     }
   };
 
   const addToGoogleCalendar = async (job) => {
-    const calendarToast = toast.loading("Adding to Google Calendar...");
-    
+    const title = encodeURIComponent(Application Deadline: ${job.title});
+    const description = encodeURIComponent(Don't forget to apply for ${job.title} at ${job.companyName});
+    const location = encodeURIComponent(job.location || "Online");
+
+    const start = new Date();
+    const end = new Date();
+    start.setDate(start.getDate() + 7);
+    end.setDate(start.getDate() + 1);
+
+    const startStr = start.toISOString().replace(/-|:|\.\d\d\d/g, "");
+    const endStr = end.toISOString().replace(/-|:|\.\d\d\d/g, "");
+
+    const url = https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startStr}/${endStr}&details=${description}&location=${location};
+    window.open(url, "_blank");
+
     try {
       const token = await getToken();
-      if (!token) {
-        toast.update(calendarToast, { render: "You must be logged in to add to calendar.", type: "error", isLoading: false, autoClose: 3000 });
-        return;
-      }
+      if (!token) return;
 
-      const res = await fetch(`${baseUrl}/api/user/save-job`, {
+      await fetch(${baseUrl}/api/user/save-job, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        headers: { "Content-Type": "application/json", Authorization: Bearer ${token} },
         body: JSON.stringify({ job }),
       });
-
-      if (!res.ok) throw new Error(await res.text());
-      
-      const title = encodeURIComponent(`Application Deadline: ${job.title}`);
-      const description = encodeURIComponent(`Don't forget to apply for ${job.title} at ${job.companyName}`);
-      const location = encodeURIComponent(job.location || "Online");
-
-      const start = new Date();
-      const end = new Date();
-      start.setDate(start.getDate() + 7);
-      end.setDate(start.getDate() + 1);
-
-      const startStr = start.toISOString().replace(/-|:|\.\d\d\d/g, "");
-      const endStr = end.toISOString().replace(/-|:|\.\d\d\d/g, "");
-
-      const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${startStr}/${endStr}&details=${description}&location=${location}`;
-      window.open(url, "_blank");
-
-      toast.update(calendarToast, {
-        render: "Added to Google Calendar!",
-        type: "success",
-        isLoading: false,
-        autoClose: 3000,
-      });
-
     } catch (err) {
-      toast.update(calendarToast, {
-        render: "Something went wrong, try again.",
-        type: "error",
-        isLoading: false,
-        autoClose: 3000,
-      });
+      toast.error("Auto Save Job Error:", err);
     }
   };
 
@@ -165,7 +138,7 @@ const JobCard = ({ job, savedJobs = [] }) => {
             onClick={saveJob}
             disabled={isSaved}
             className={`flex-1 h-11 rounded-lg border border-gray-200 font-medium text-sm transition-all
-                        ${isSaved
+                       ${isSaved
                           ? "bg-gray-200 text-gray-500 cursor-not-allowed pixelify-sans-regular"
                           : "bg-white text-gray-900 hover:bg-[#6573D4]/90 hover:text-white hover:shadow-md hover:scale-[1.01] pixelify-sans-regular"}`}
           >
@@ -173,9 +146,9 @@ const JobCard = ({ job, savedJobs = [] }) => {
           </button>
 
           <button
-            onClick={() => navigate(`/jobs/${job._id}`)} 
+            onClick={() => navigate(/jobs/${job._id})} 
             className="flex-1 h-11 rounded-lg border border-gray-200 font-medium text-sm bg-white 
-                        text-gray-900 hover:bg-[#6573D4]/90 hover:text-white hover:shadow-md hover:scale-[1.01] transition-all pixelify-sans-regular"
+                       text-gray-900 hover:bg-[#6573D4]/90 hover:text-white hover:shadow-md hover:scale-[1.01] transition-all pixelify-sans-regular"
           >
             Learn More
           </button>
@@ -187,7 +160,7 @@ const JobCard = ({ job, savedJobs = [] }) => {
         onClick={() => addToGoogleCalendar(job)}
         disabled={isSaved}
         className={`w-full h-11 mt-3 rounded-lg border border-gray-200 font-medium text-sm transition-all
-                         ${isSaved
+                       ${isSaved
                           ? "bg-gray-200 text-gray-500 cursor-not-allowed pixelify-sans-regular"
                           : "bg-green-50 text-green-700 hover:bg-green-600 hover:text-white hover:shadow-md hover:scale-[1.01] pixelify-sans-regular"}`}
       >
@@ -197,4 +170,4 @@ const JobCard = ({ job, savedJobs = [] }) => {
   );
 };
 
-export default JobCard;
+export default JobCard;
