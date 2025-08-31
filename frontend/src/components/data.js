@@ -3,6 +3,65 @@
 export const jobData = [
   // Original Internships from the first prompt
   {
+  "_id": "ge-internship-1",
+  "title": "Software Engineering Specialist - Intern",
+  "companyId": {
+    "name": "GE Vernova",
+    "image": "https://cdn.phenompeople.com/CareerConnectResources/GVXGVWGLOBAL/images/1709787440058_logo.svg"
+  },
+  "location": "Hyderabad",
+  "level": "Internship",
+  "description": "GE Vernova is seeking a highly organized Software Engineering Specialist - Intern to grow their technical and professional skills while working on substantial projects with real-world implications. Interns will get hands-on with digital technologies and work on meaningful, impactful assignments. The internship is a primary pipeline to full-time employment and offers significant exposure to key software and business leaders. This is a full-time, 6-11 month internship with the focus on Software Engineering functions.",
+  "stipend": "Competitive",
+  "applyDate": "2025-08-29",
+  "requiredSkills": [
+    "Computer Science",
+    "Artificial Intelligence",
+    "Software Engineering",
+    "Problem Solving"
+  ],
+  "experience": "For 2026 graduates with a minimum cumulative GPA of 8.5",
+  "commonTopics": [
+    "Digital Technology",
+    "Software Development",
+    "Agile",
+    "Decarbonization",
+    "Electrification"
+  ],
+  "applyLink": "https://jobs.gecareers.com/digital/global/en/job/R5018384/Software-Engineering-Specialist-Intern"
+},{
+  "_id": "nutrabay-internship-1",
+  "title": "Frontend Developer Intern",
+  "companyId": {
+    "name": "Nutrabay",
+    "image": "https://nutrabay.keka.com/ats/documents/599f957b-63bd-402e-a122-535ef39a653d/careerportal/7bc68f9876e3412f9e21afa347d568bc.png"
+  },
+  "location": "Golf Course Road, Gurugram, Haryana",
+  "level": "Internship",
+  "description": "As a Frontend Developer Intern at Nutrabay, you will work closely with experienced developers to build scalable and engaging user interfaces. You’ll be involved in creating seamless user experiences, optimizing performance, and integrating with backend services while gaining real-world experience with modern web technologies. You will develop dynamic, responsive, and user-friendly web interfaces using React.js and Next.js, and integrate them with backend APIs developed in Node.js.",
+  "stipend": "Competitive",
+  "applyDate": "2025-08-31",
+  "requiredSkills": [
+    "React.js",
+    "Next.js",
+    "Node.js",
+    "Git",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "RESTful APIs"
+  ],
+  "experience": "0 - 6 months",
+  "commonTopics": [
+    "Frontend Development",
+    "User Interface (UI)",
+    "API Integration",
+    "Agile",
+    "eCommerce"
+  ],
+  "applyLink": "https://nutrabay.keka.com/careers/jobdetails/94211"
+},
+  {
   "_id": "godaddy-internship-1",
   "title": "Software Development Engineer Intern",
   "companyId": {
